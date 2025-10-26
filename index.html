@@ -50,20 +50,81 @@
     .cta{background:var(--accent-grad);padding:10px 16px;border-radius:10px;color:#041322;font-weight:700;box-shadow:0 8px 30px rgba(76,50,255,0.12);border:1px solid rgba(255,255,255,0.06)}
     .hero{
       display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;margin-top:36px;
+      position:relative; overflow:visible;
     }
 
-    /* Hero left */
+    /* Hero animated background */
+    .hero-bg{
+      position:absolute;
+      inset:-32px -32px -10px -32px;
+      z-index:0;
+      pointer-events:none;
+      border-radius:20px;
+      overflow:hidden;
+      mix-blend-mode:normal;
+      filter:contrast(1.05) saturate(1.05);
+    }
+    .hero-bg .blob{
+      position:absolute;
+      width:520px;
+      height:520px;
+      border-radius:50%;
+      filter:blur(88px);
+      opacity:.78;
+      mix-blend-mode:screen;
+      transform-origin:center;
+      animation:blobMove 14s ease-in-out infinite;
+      will-change:transform,opacity;
+    }
+    .hero-bg .b1{
+      left:-160px; top:-100px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,0.95), rgba(124,92,255,0.35) 40%, transparent 62%);
+      animation-duration:13s;
+    }
+    .hero-bg .b2{
+      right:-140px; top:-60px;
+      background: radial-gradient(circle at 70% 70%, rgba(77,225,182,0.95), rgba(77,225,182,0.32) 36%, transparent 62%);
+      animation-duration:16s;
+      animation-delay:2s;
+    }
+    .hero-bg .b3{
+      left:50%; bottom:-180px; transform:translateX(-50%);
+      width:640px; height:640px;
+      background: radial-gradient(circle at 50% 50%, rgba(98,70,220,0.6), rgba(77,225,182,0.45) 35%, transparent 65%);
+      animation-duration:20s;
+      animation-delay:4s;
+      filter:blur(120px);
+      opacity:.62;
+    }
+    @keyframes blobMove{
+      0%{ transform: translateY(0) scale(1) rotate(0deg); opacity:0.9 }
+      25%{ transform: translateY(-22px) scale(1.06) rotate(12deg); opacity:0.95 }
+      50%{ transform: translateY(0) scale(1) rotate(24deg); opacity:0.85 }
+      75%{ transform: translateY(18px) scale(0.98) rotate(12deg); opacity:0.9 }
+      100%{ transform: translateY(0) scale(1) rotate(0deg); opacity:0.9 }
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:linear-gradient(180deg, rgba(6,12,24,0.08), rgba(6,12,24,0.18));
+      pointer-events:none;
+      border-radius:18px;
+    }
+
+    /* Hero content */
     .hero-card{
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       padding:36px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);
       box-shadow: 0 20px 60px rgba(3,8,20,0.6);
+      position:relative; z-index:2;
     }
     .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,0.12);color:var(--accent-1);font-weight:700;font-size:13px}
     h2{font-size:36px;margin:18px 0 8px;line-height:1.05}
     p.lead{color:var(--muted);margin:0 0 22px;font-size:15px;max-width:66%}
     .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
     .feature{background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:600;color:var(--muted);font-size:13px}
-
     .hero-cta{display:flex;gap:12px;margin-top:26px}
     .btn-primary{
       padding:14px 18px;border-radius:12px;border:0;background:var(--accent-grad);font-weight:700;color:#041322;
@@ -71,8 +132,8 @@
     }
     .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:12px;color:var(--muted);cursor:pointer}
 
-    /* Hero right - card */
-    .stats-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    /* Stats card */
+    .stats-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);position:relative; z-index:2}
     .stat{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
     .stat:last-child{border-bottom:0}
     .stat .num{font-size:22px;font-weight:800;color:white}
@@ -110,6 +171,10 @@
     .plan{flex:1;min-width:220px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .plan.highlight{background:linear-gradient(180deg, rgba(124,92,255,0.08), rgba(77,225,182,0.03));box-shadow:0 20px 60px rgba(124,92,255,0.08)}
 
+    /* contact & form */
+    form input, form textarea{outline:none}
+    form input:focus, form textarea:focus{box-shadow:0 6px 18px rgba(76,50,255,0.08);border-color:rgba(124,92,255,0.18)}
+
     /* footer */
     footer{margin-top:48px;padding:28px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
@@ -127,7 +192,7 @@
       .pricing{flex-direction:column}
     }
 
-    /* subtle reveal animations */
+    /* reveal animations */
     .reveal{opacity:0;transform:translateY(10px);transition:opacity 600ms ease, transform 600ms ease}
     .reveal.show{opacity:1;transform:none}
   </style>
@@ -153,6 +218,13 @@
 
     <main>
       <section class="hero">
+        <!-- Animated background -->
+        <div class="hero-bg" aria-hidden="true">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+          <div class="blob b3"></div>
+        </div>
+
         <div class="hero-card reveal">
           <span class="kicker">Enroll — Limited Cohorts</span>
           <h2>Become a senior developer — in 12 months</h2>
@@ -343,25 +415,26 @@
   </div>
 
   <script>
-    // small interactive behaviors: reveal on scroll, form stub, small helpers
+    // reveal on scroll
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
     }, {threshold: 0.12});
     revealEls.forEach(el=>io.observe(el));
 
+    // helpers
     function scrollToSection(sel){
       const el = document.querySelector(sel);
       if(!el) return;
       el.scrollIntoView({behavior:'smooth', block:'start'});
     }
-
     function openApply(){
       scrollToSection('#contact');
       const el = document.querySelector('#applyForm input[name="name"]');
       if(el) setTimeout(()=>el.focus(), 500);
     }
 
+    // form stub
     document.getElementById('applyForm').addEventListener('submit', function(e){
       e.preventDefault();
       const msg = document.getElementById('formMsg');
@@ -369,7 +442,7 @@
       this.reset();
     });
 
-    // Accessibility: keyboard focus outline for buttons
+    // keyboard nav detection for accessibility outlines
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') document.body.classList.add('keyboard-nav');
     });
