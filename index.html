@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zenith Coding Academy — Professional Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Zenith Coding Academy — premium web development, data science and cloud programs with career support.">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#071326;
+      --muted:#a8b3c3;
+      --glass: rgba(255,255,255,0.04);
+      --accent-1: #7c5cff;
+      --accent-2: #4de1b6;
+      --accent-grad: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      --radius:14px;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.06), transparent),
+                  linear-gradient(180deg,#051022 0%, #071226 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Layout */
+    .container{max-width:var(--max-width);margin:0 auto;padding:48px 24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:52px;height:52px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6), inset 0 -2px 0 rgba(0,0,0,0.2);
+      border:1px solid rgba(255,255,255,0.03);
+      font-weight:800;color:white;font-size:18px;
+    }
+    .brand h1{margin:0;font-size:18px;letter-spacing:-0.2px}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px}
+    nav a:hover{color:white;background:var(--glass)}
+    .cta{background:var(--accent-grad);padding:10px 16px;border-radius:10px;color:#041322;font-weight:700;box-shadow:0 8px 30px rgba(76,50,255,0.12);border:1px solid rgba(255,255,255,0.06)}
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;margin-top:36px;
+    }
+
+    /* Hero left */
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:36px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 20px 60px rgba(3,8,20,0.6);
+    }
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(124,92,255,0.12);color:var(--accent-1);font-weight:700;font-size:13px}
+    h2{font-size:36px;margin:18px 0 8px;line-height:1.05}
+    p.lead{color:var(--muted);margin:0 0 22px;font-size:15px;max-width:66%}
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .feature{background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-weight:600;color:var(--muted);font-size:13px}
+
+    .hero-cta{display:flex;gap:12px;margin-top:26px}
+    .btn-primary{
+      padding:14px 18px;border-radius:12px;border:0;background:var(--accent-grad);font-weight:700;color:#041322;
+      box-shadow:0 12px 30px rgba(76,50,255,0.12);cursor:pointer;font-size:15px
+    }
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px 16px;border-radius:12px;color:var(--muted);cursor:pointer}
+
+    /* Hero right - card */
+    .stats-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .stat{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+    .stat:last-child{border-bottom:0}
+    .stat .num{font-size:22px;font-weight:800;color:white}
+    .stat .meta{color:var(--muted);font-size:13px}
+
+    /* Courses grid */
+    .section{margin-top:48px}
+    .section h3{margin:0 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .course{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(2,6,23,0.5);
+      transition:transform 220ms ease, box-shadow 220ms ease;
+    }
+    .course:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(2,6,23,0.6)}
+    .course .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(77,225,182,0.08);color:var(--accent-2);display:inline-block}
+    .course h4{margin:12px 0 6px}
+    .course p{margin:0;color:var(--muted);font-size:14px}
+    .course .meta{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+    .pill{background:rgba(255,255,255,0.02);padding:6px 10px;border-radius:999px;font-weight:700;color:var(--muted);font-size:13px}
+
+    /* Instructors */
+    .instructors{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+    .ins-card{background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);width:220px;text-align:center}
+    .avatar{width:72px;height:72px;border-radius:14px;margin:0 auto 10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));font-weight:800;color:#041322}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .quote-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .quote{font-size:16px;color:var(--muted);margin:0 0 12px}
+    .quote .who{font-weight:700}
+
+    /* Pricing */
+    .pricing{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+    .plan{flex:1;min-width:220px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .plan.highlight{background:linear-gradient(180deg, rgba(124,92,255,0.08), rgba(77,225,182,0.03));box-shadow:0 20px 60px rgba(124,92,255,0.08)}
+
+    /* footer */
+    footer{margin-top:48px;padding:28px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+    /* responsive */
+    @media (max-width:1000px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+    }
+    @media (max-width:680px){
+      nav{display:none}
+      header{align-items:flex-start}
+      .container{padding:24px 16px}
+      .grid{grid-template-columns:1fr}
+      .pricing{flex-direction:column}
+    }
+
+    /* subtle reveal animations */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity 600ms ease, transform 600ms ease}
+    .reveal.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">ZC</div>
+        <div>
+          <h1>Zenith Coding Academy</h1>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">Industry-aligned programs · Career-first</div>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#courses">Courses</a>
+        <a href="#instructors">Instructors</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#apply">Apply</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card reveal">
+          <span class="kicker">Enroll — Limited Cohorts</span>
+          <h2>Become a senior developer — in 12 months</h2>
+          <p class="lead">Project-based curriculum, 1:1 mentorship, portfolio-ready capstones, hiring support with guaranteed interview prep.</p>
+
+          <div class="features">
+            <div class="feature">Live classes</div>
+            <div class="feature">Career coaching</div>
+            <div class="feature">Job-ready projects</div>
+            <div class="feature">Alumni network</div>
+          </div>
+
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="scrollToSection('#courses')">View Programs</button>
+            <button class="btn-outline" onclick="openApply()">Book a Call</button>
+          </div>
+
+          <div style="margin-top:22px;color:var(--muted);font-size:13px">
+            Trusted by professionals from startups to Fortune 500.
+          </div>
+        </div>
+
+        <aside class="stats-card reveal">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div style="font-weight:700">Cohort Snapshot</div>
+            <div style="font-size:12px;color:var(--muted)">Next start: Sep 8</div>
+          </div>
+          <div class="stat"><div class="num">94%</div><div class="meta">Job placement within 6 months</div></div>
+          <div class="stat"><div class="num">250+</div><div class="meta">Hiring partners</div></div>
+          <div class="stat"><div class="num">1200</div><div class="meta">Graduates</div></div>
+        </aside>
+      </section>
+
+      <section id="courses" class="section reveal">
+        <h3>Programs</h3>
+        <div class="grid">
+          <article class="course">
+            <div class="tag">Full-Stack</div>
+            <h4>Full-Stack Web Engineer</h4>
+            <p>Comprehensive JavaScript stack, React, Node.js, databases, testing and deployment. 12-month immersive program with career track.</p>
+            <div class="meta">
+              <div class="pill">1200 hrs</div>
+              <div style="color:var(--muted);font-size:13px">Cohort-based</div>
+            </div>
+          </article>
+
+          <article class="course">
+            <div class="tag">Data</div>
+            <h4>Data Science & ML</h4>
+            <p>Python, statistics, machine learning, model deployment, MLOps and portfolio projects with real datasets.</p>
+            <div class="meta">
+              <div class="pill">1000 hrs</div>
+              <div style="color:var(--muted);font-size:13px">Mentor-led</div>
+            </div>
+          </article>
+
+          <article class="course">
+            <div class="tag">Cloud</div>
+            <h4>Cloud Engineering</h4>
+            <p>Cloud fundamentals, infrastructure as code, Kubernetes, observability and scalable system design.</p>
+            <div class="meta">
+              <div class="pill">900 hrs</div>
+              <div style="color:var(--muted);font-size:13px">Hands-on labs</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="instructors" class="section reveal">
+        <h3>Instructors</h3>
+        <div class="instructors">
+          <div class="ins-card">
+            <div class="avatar">AM</div>
+            <div style="font-weight:700">Ava Morales</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Senior Frontend Engineer, ex-Scaleup</div>
+          </div>
+          <div class="ins-card">
+            <div class="avatar">RK</div>
+            <div style="font-weight:700">Ravi Kapoor</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">ML Architect, FinTech</div>
+          </div>
+          <div class="ins-card">
+            <div class="avatar">LS</div>
+            <div style="font-weight:700">Lina Schroeder</div>
+            <div style="color:var(--muted);font-size:13px;margin-top:6px">Cloud Engineer, Infra</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h3>Student outcomes & testimonials</h3>
+        <div class="testimonials">
+          <div class="quote-card">
+            <p class="quote">"Zenith transformed my career — I shipped production features within 3 months and landed senior roles thanks to the capstone."</p>
+            <div class="who">— Jordan P., Software Engineer</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px;align-items:stretch">
+            <div class="quote-card">
+              <p class="quote">"Mentors provided real feedback and the hiring prep was exceptional."</p>
+              <div class="who">— Camila T., Data Scientist</div>
+            </div>
+            <div class="quote-card">
+              <p class="quote">"Hands-on labs + career services — worth every hour."</p>
+              <div class="who">— Leo A., DevOps Engineer</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section reveal">
+        <h3>Pricing & enrollment</h3>
+        <div class="pricing">
+          <div class="plan">
+            <div style="font-weight:800;font-size:18px">Standard</div>
+            <div style="font-size:28px;margin:8px 0">$8,500</div>
+            <div style="color:var(--muted);font-size:14px">Self-paced + community support</div>
+            <ul style="color:var(--muted);margin-top:12px;padding-left:18px">
+              <li>Project-based curriculum</li>
+              <li>Office hours</li>
+              <li>Career resources</li>
+            </ul>
+            <div style="margin-top:12px">
+              <button class="btn-primary" style="background:linear-gradient(90deg,#6b3bff,#4de1b6)">Enroll</button>
+            </div>
+          </div>
+
+          <div class="plan highlight">
+            <div style="font-weight:800;font-size:18px">Immersive</div>
+            <div style="font-size:28px;margin:8px 0">$12,900</div>
+            <div style="color:var(--muted);font-size:14px">Full-time cohort with 1:1 mentorship</div>
+            <ul style="color:var(--muted);margin-top:12px;padding-left:18px">
+              <li>Live classes</li>
+              <li>Personal mentor</li>
+              <li>Guaranteed interview prep</li>
+            </ul>
+            <div style="margin-top:12px">
+              <button class="btn-primary">Apply</button>
+            </div>
+          </div>
+
+          <div class="plan">
+            <div style="font-weight:800;font-size:18px">Enterprise</div>
+            <div style="font-size:28px;margin:8px 0">Contact</div>
+            <div style="color:var(--muted);font-size:14px">Company training & upskilling</div>
+            <ul style="color:var(--muted);margin-top:12px;padding-left:18px">
+              <li>Custom curriculum</li>
+              <li>Onsite & remote</li>
+              <li>Dedicated success manager</li>
+            </ul>
+            <div style="margin-top:12px">
+              <button class="btn-outline" onclick="scrollToSection('#contact')">Contact Sales</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section reveal">
+        <h3>Contact & apply</h3>
+        <div style="display:flex;gap:20px;flex-wrap:wrap">
+          <form id="applyForm" style="flex:1;min-width:320px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+            <div style="display:flex;gap:12px">
+              <input required name="name" placeholder="Full name" style="flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+              <input required name="email" type="email" placeholder="Email" style="flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+            </div>
+            <textarea name="note" placeholder="Tell us about your goals" style="width:100%;margin-top:12px;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" rows="4"></textarea>
+            <div style="margin-top:12px;display:flex;gap:10px">
+              <button class="btn-primary" type="submit">Request info</button>
+              <button type="button" class="btn-outline" onclick="openApply()">Schedule a call</button>
+            </div>
+            <div id="formMsg" style="margin-top:10px;color:var(--muted);font-size:13px"></div>
+          </form>
+
+          <div style="width:320px;min-width:260px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);height:max-content">
+            <div style="font-weight:800">Support</div>
+            <div style="color:var(--muted);margin-top:8px;font-size:14px">admissions@zenithcoding.example</div>
+            <div style="color:var(--muted);margin-top:6px;font-size:14px">+1 (555) 123-4567</div>
+            <div style="margin-top:12px;color:var(--muted);font-size:13px">Office hours: Mon–Fri, 9am–6pm</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <strong>Zenith Coding Academy</strong> — Designed for careers</div>
+      <div style="color:var(--muted)">Privacy · Terms · Built with care</div>
+    </footer>
+  </div>
+
+  <script>
+    // small interactive behaviors: reveal on scroll, form stub, small helpers
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+    }, {threshold: 0.12});
+    revealEls.forEach(el=>io.observe(el));
+
+    function scrollToSection(sel){
+      const el = document.querySelector(sel);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function openApply(){
+      scrollToSection('#contact');
+      const el = document.querySelector('#applyForm input[name="name"]');
+      if(el) setTimeout(()=>el.focus(), 500);
+    }
+
+    document.getElementById('applyForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const msg = document.getElementById('formMsg');
+      msg.textContent = 'Thanks — we received your request. Our admissions team will contact you within 24 hours.';
+      this.reset();
+    });
+
+    // Accessibility: keyboard focus outline for buttons
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') document.body.classList.add('keyboard-nav');
+    });
+  </script>
+</body>
+</html>
